@@ -1,0 +1,65 @@
+### Listar eventos
+GET http://localhost:3000/events
+
+### Recuperar ID do evento criado
+@eventId = 782d0a65-a6ba-4721-92bb-d931b2e420ae
+
+
+### Cadastrar Evento
+POST http://localhost:3000/events
+Content-Type: application/json
+
+{
+  "name": "New Event",
+  "description": "event description",
+  "date": "2020-01-01T20:00:00",
+  "price": 150.85
+}
+
+
+### Recuperar Evento por ID
+GET http://localhost:3000/events/782d0a65-a6ba-4721-92bb-d931b2e420ae
+
+
+### Atualizar evento
+PATCH http://localhost:3000/events/782d0a65-a6ba-4721-92bb-d931b2e420ae
+Content-Type: application/json
+
+{
+  "name": "Rock Rocks",
+  "date": "2020-01-01T20:00:00"
+}
+
+### Exclui Evento por ID
+DELETE http://localhost:3000/events/ff414544-e4d6-42a7-898f-c86a37730aba
+
+
+### adicionar spot a um evento
+POST http://localhost:3000/events/782d0a65-a6ba-4721-92bb-d931b2e420ae/spots
+Content-Type: application/json
+
+{
+  "name": "A5"
+}
+
+### lista de spots do evento
+GET http://localhost:3000/events/782d0a65-a6ba-4721-92bb-d931b2e420ae/spots
+
+
+### remover spot
+DELETE http://localhost:3000/events/782d0a65-a6ba-4721-92bb-d931b2e420ae/spots/19173dc7-6c5e-45cd-83d7-a8bc6bdc5937
+
+
+### reserve spots
+POST http://localhost:3000/events/782d0a65-a6ba-4721-92bb-d931b2e420ae/reserve
+Content-Type: application/json
+
+{
+  "spots": [
+    {"spot": "A1","kind": "full"},
+    {"spot": "A2","kind": "full"},
+    {"spot": "A3","kind": "half"},
+    {"spot": "A4","kind": "half"}
+  ],
+  "email": "renan.winter@gmail.com"
+}
