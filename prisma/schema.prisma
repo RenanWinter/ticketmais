@@ -74,3 +74,11 @@ enum TicketStatus {
   reserved
   canceled
 }
+
+model ApiToken {
+  id        String   @id @default(uuid())
+  validity  DateTime
+  user      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

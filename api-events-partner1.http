@@ -1,0 +1,78 @@
+### Criar token de acesso à api
+
+POST http://localhost:3001/tokens
+Content-Type: application/json
+
+{
+  "user": "renan.winter@gmail.com",
+  "validity": "2024-12-31T16:00:00.000-03:00"
+}
+
+### Excluir token de acesso
+DELETE http://localhost:3001/tokens/22a63109-8403-4eb9-b714-34d65c03a152
+x-api-token: ec50b9ca-768e-4dbd-9ef2-681d5f814388
+
+### Listar eventos
+GET http://localhost:3001/events
+x-api-token: ec50b9ca-768e-4dbd-9ef2-681d5f814388
+
+
+### Cadastrar Evento
+POST http://localhost:3001/events
+Content-Type: application/json
+
+{
+  "name": "New Event",
+  "description": "event description",
+  "date": "2020-01-01T20:00:00",
+  "price": 150.85
+}
+
+
+### Recuperar Evento por ID
+GET http://localhost:3001/events/1020b825-fd07-4a21-803c-3e2eb7738fc3
+
+
+### Atualizar evento
+PATCH http://localhost:3001/events/1020b825-fd07-4a21-803c-3e2eb7738fc3
+Content-Type: application/json
+
+{
+  "name": "Banda Loading Show",
+  "date": "2020-01-01T20:00:00"
+}
+
+### Exclui Evento por ID
+DELETE http://localhost:3001/events/1020b825-fd07-4a21-803c-3e2eb7738fc3
+
+
+### adicionar spot a um evento
+POST http://localhost:3001/events/1020b825-fd07-4a21-803c-3e2eb7738fc3/spots
+Content-Type: application/json
+
+{
+  "name": "B4"
+}
+
+### lista de spots do evento
+GET http://localhost:3001/events/1020b825-fd07-4a21-803c-3e2eb7738fc3/spots
+
+
+### remover spot
+DELETE http://localhost:3001/events/1020b825-fd07-4a21-803c-3e2eb7738fc3/spots/19173dc7-6c5e-45cd-83d7-a8bc6bdc5937
+
+
+### reserve spots
+POST http://localhost:3001/events/1020b825-fd07-4a21-803c-3e2eb7738fc3/reserve
+Content-Type: application/json
+x-api-token: 002f3795-359c-438d-9ec5-4ed11020149d
+
+{
+  "spots": [
+    {"spot": "A1","kind": "full"},
+    {"spot": "A2","kind": "full"},
+    {"spot": "A3","kind": "half"},
+    {"spot": "A4","kind": "half"}
+  ],
+  "email": "renan.winter@gmail.com"
+}
